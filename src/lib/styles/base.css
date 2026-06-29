@@ -1,0 +1,23 @@
+/* #region Base - May 2026 */
+@layer reset, forms, theme, base;
+/*, tables, vsdark ; */
+
+@import url("$lib/styles/reset.css") layer(reset);
+@import url("$lib/styles/forms.css") layer(forms);
+@import url("$lib/styles/theme.css") layer(theme);
+/* @import url("$lib/styles/tables.css") layer(tables); */
+/* @import url("$lib/styles/vsdark.css") layer(vsdark); */
+
+
+
+@layer base {
+  :root {
+    /* --sans-serif: "Open Sans", sans-serif; */
+    /* --monospace: "Source Code Pro", monospace; */
+
+    --font-size: 16px;   
+    /* color-scheme: dark; */
+    /* color-scheme: light; */
+  }
+}
+/* #endregion Base */

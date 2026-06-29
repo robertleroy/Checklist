@@ -1,0 +1,35 @@
+{
+	"name": "test-auth",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev --host",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"db:push": "drizzle-kit push",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate",
+		"db:studio": "drizzle-kit studio"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-node": "^5.5.7",
+		"@sveltejs/kit": "^2.63.0",
+		"@sveltejs/vite-plugin-svelte": "^7.1.2",
+		"@types/node": "^22",
+		"drizzle-kit": "^0.31.10",
+		"svelte": "^5.56.1",
+		"vite": "^8.0.16"
+	},
+	"dependencies": {
+		"@libsql/client": "^0.17.3",
+		"drizzle-orm": "^0.45.2",
+		"bcrypt": "^6.0.0",
+		"sortablejs": "^1.15.7"
+	},
+	"overrides": {
+		"cookie": "^0.7.0",
+		"esbuild": "^0.25.0"
+	}
+}

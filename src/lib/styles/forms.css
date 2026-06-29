@@ -1,0 +1,151 @@
+/* #region Forms - May 2026  */
+input:not([type="checkbox"], [type="radio"]),
+select, textarea, button, a.button, a.btn {
+  display: inline flow-root;
+  font-family: var(--sans-serif);
+  font-size: calc(1em - 2px);
+  line-height: 1.5;
+  height: var(--button-height, 1.5em);
+  max-width: 100%;
+  padding: 0 1ch ;
+  color: var(--button-fg, inherit);
+  background-color: var(--button-bg, inherit);
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: var(--border-radius, 0.25em);
+  overflow: hidden;
+  vertical-align: var(--vertical-align);
+} 
+select[multiple] { height: initial; }
+
+/* #region Buttons */
+button, select, a.button, a.btn, input[type="button"],
+input[type="submit"], input[type="reset"], 
+input[type="image"], input[type="color"] {
+  display: inline grid;
+  appearance: button;  
+  cursor: pointer;
+  &:active:not(:disabled) {     
+    color: light-dark(hsl(0 0 27 / 0.5), hsl(0 0 70 / 0.8));
+    outline: 0.1px solid var(--outline-color);
+  }
+}
+
+input[type="submit"], input[type="reset"], input[type="button"] { padding-bottom: 2px; }
+input[type="color"] {
+  width: 3em;
+  padding: 0.375em;
+}
+
+a.button, a.btn { text-decoration: unset; }
+button.unset, button.link {
+  font-size: 1em;
+  line-height: var(--line-height);
+  color: currentColor;
+  background-color: unset;
+  text-align: unset;
+  height: unset;
+  padding: 0; 
+  border: 0;
+  box-shadow: 0;
+  &:active:not(:disabled) { 
+    box-shadow: unset;
+    outline: none;
+  }
+}
+button.unset:has(svg) { line-height: 0; }
+button.link {
+   &:hover:not(:disabled) {
+    text-decoration: solid underline;
+   }
+}
+/* #endregion Buttons */
+
+/* #region Textbox */
+input[type="text"],input[type="number"],input[type="search"],input[type="email"],input[type="password"],input[type="tel"], input[type="url"],input[type="date"],input[type="week"],input[type="month"],input[type="time"],input[type="datetime-local"],input[type="datetime"], textarea {
+  &:focus {
+    border-color: var(--outline-color);
+    outline: 1px solid var(--outline-color);
+  }
+}
+textarea {
+  height: unset;
+}
+input[type="number"] {
+  width: 6rem;
+  padding-right: 0;
+  min-width: 4rem;
+}
+/* #endregion Textbox */
+
+/* #region Checkbox */
+label:has([type="checkbox"], [type="radio"]) {
+  vertical-align: var(--vertical-align);
+  display: inline flex;
+  width: max-content;
+  gap: 0 0.33rem;
+  cursor: pointer;
+}
+
+[type="checkbox"], [type="radio"] {
+  --cb-size: 1em;
+  appearance: unset;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  font-size: inherit;
+  height: 1.5em;
+  width: 1.5em;
+  margin: 0;
+  background-color: unset;
+  border: none;
+  vertical-align: var(--vertical-align);
+  user-select: none;
+  overflow: hidden;
+  cursor: pointer;
+
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    top: 0.3125em;
+    box-sizing: border-box;
+    height:var(--cb-size);
+    width:var(--cb-size);
+    transition: color var(--duration),
+      background-color var(--duration);
+  }
+  &::after { scale: 0; }
+  &:checked::after { scale: 1; }
+  &::before {    
+    background-color: var(--button-bg);
+    border: 1px solid var(--border-color);
+  }    
+  &::after {
+    mask-size:var(--cb-size);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: var(--fg);
+  }
+}
+[type="checkbox"] {
+  &::before {
+    border-radius: var(--border-radius); }
+  &::after {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' style='fill: none; stroke: currentColor; stroke-width: 1.5'%3E%3Cpath d='M 12.5,5.5 7,11 3.5,7.5'/%3E%3C/svg%3E%0A");
+  }
+}
+[type="radio"] {
+  &::before { border-radius: 50%; }
+  &::after {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cy='8' cx='8' r='4'/%3E%3C/svg%3E%0A");
+    opacity: 0.8;
+  }
+}
+/* #endregion Checkbox */
+
+
+[disabled], :disabled  { 
+  color: hsl(from currentColor h s l / 0.2);
+  opacity: 0.5;
+  cursor: default;
+}
+/* #endregion Forms */
