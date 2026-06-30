@@ -64,7 +64,7 @@
   function set_theme(isDark = false) {
     const exp = 60 * 60 * 24 * 365; /*** 1yr ***/
     const val = isDark ? "dark" : "light";
-    document.cookie = `${config.cookieNames.theme}=${val}; max-age=${exp}; path=/; secure; SameSite=lax`;
+    document.cookie = `${config.cookieNames.theme}=${val}; max-age=${exp}; path=/; SameSite=lax`;
     document.documentElement.dataset.theme = val;
   }
 </script>

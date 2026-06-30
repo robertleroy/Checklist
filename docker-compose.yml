@@ -1,10 +1,27 @@
+
+# services:
+#   checklist:
+#     build:
+#       context: ./app
+#       dockerfile: Dockerfile
+#     ports:
+#       - "3010:3000"
+#     volumes:
+#       - ./data:/app/data
+#     environment:
+#       - DATABASE_URL=file:/app/data/local.db
+#     restart: unless-stopped
+
+
+
 services:
   checklist:
-    build: .
+    build: ./app
     ports:
-      - "3010:3000"
+      - "3010:3000" 
     volumes:
-      - ./data:/app/data
+      - ./data:/app/data   
     environment:
-      - DATABASE_URL=file:/app/data/local.db
+      - DATABASE_URL=file:/app/data/local.db  
+      - ORIGIN=http://100.114.69.27:3010      # <-- Add this line
     restart: unless-stopped

@@ -3,7 +3,7 @@ import { fail, redirect } from "@sveltejs/kit";
 import { randomBytes } from "crypto";
 import { db } from "$lib/server/db";
 import { user, session } from "$lib/server/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, lt, and } from "drizzle-orm";
 import * as auth from "$lib/server/auth";
 import { config } from "$lib";
 // import * as table from "$lib/server/db/schema";
@@ -54,11 +54,8 @@ export const actions = {
       path: "/",
       httpOnly: true,
       sameSite: "lax",
-      secure: false,
       maxAge: config.maxAge,
     });
-
-    // console.log("DEBUG",event.cookies.get(config.cookieNames.session));
 
     throw redirect(303, "/");
   },
@@ -106,7 +103,6 @@ export const actions = {
       path: "/",
       httpOnly: true,
       sameSite: "lax",
-      secure: false,
       maxAge: config.maxAge,
     });
 
