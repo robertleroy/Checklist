@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+ENV DATABASE_URL=file:local.db
 RUN npm run build
 RUN npm prune --production
 
@@ -13,8 +14,4 @@ COPY --from=builder /app/node_modules node_modules/
 COPY package.json .
 EXPOSE 3000
 ENV NODE_ENV=production
-# CMD [ "node", "build" ]
-CMD [ "npx", "drizzle-kit", "migrate", "&&", "node", "build" ]
-
-# RUN mkdir -p /app/data
-# ENV DATABASE_URL=file:/app/data/local.db
+CMD npx drizzle-kit migrate && node build
