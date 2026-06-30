@@ -19,11 +19,7 @@ export default defineConfig({
 			}
 		})
 	],
-  css: {
-		lightningcss: {
-			exclude: ['light-dark']
-		}
-	},	
+
   build: {
 		cssMinify: 'esbuild'
 	}
