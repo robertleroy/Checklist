@@ -14,4 +14,6 @@ COPY --from=builder /app/node_modules node_modules/
 COPY package.json .
 EXPOSE 3000
 ENV NODE_ENV=production
-CMD npx drizzle-kit migrate && node build
+# CMD npx drizzle-kit migrate && node build
+CMD npx drizzle-kit migrate --config=drizzle.config.js && node build
+
